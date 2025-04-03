@@ -24,5 +24,25 @@ namespace MMIMApp.Views
         {
             InitializeComponent();
         }
+
+        private void btnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                BrushConverter brushConverter = new();
+                btn.Background = brushConverter.ConvertFromString("#212F3D") as Brush;
+                Console.WriteLine("Button mouse entered!");
+            }
+        }
+
+        private void btnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                BrushConverter brushConverter = new();
+                btn.Background = brushConverter.ConvertFromString("#17202A") as Brush;
+                Console.WriteLine("Button mouse left!");
+            }
+        }
     }
 }
