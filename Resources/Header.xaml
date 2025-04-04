@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="MMIMApp.Resources.Header"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MMIMApp.Resources"
+             mc:Ignorable="d" 
+             d:DesignHeight="1024" d:DesignWidth="1072">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Background="White">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Margin="16">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontSize" Value="16"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    
+                    <TextBlock Text="&#xE830;" FontFamily="Segoe MDL2 Assets" Margin="0 0 16 0"></TextBlock>
+                    <TextBlock Text="Back"></TextBlock>
+                </StackPanel>
+                <TextBlock Text="Title" FontSize="48" Margin="16"></TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="#ABB2B9"></Grid>
+    </Grid>
+</UserControl>
