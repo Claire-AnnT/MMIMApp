@@ -1,18 +1,17 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
-namespace MMIMApp;
-
-public partial class App : Application
+namespace MiniMartApp
 {
-    override protected void OnStartup(StartupEventArgs e)
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App : Application
     {
-        MainWindow = new MainWindow();
-        MainWindow.Show();
-
-        base.OnStartup(e);
-        // Initialize the application
     }
 }
-
