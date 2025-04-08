@@ -7,7 +7,6 @@ namespace MMIMApp.Data
     {
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Product> Products { get; set; } = null!;
-        public DbSet<Report> Reports { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
