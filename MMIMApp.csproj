@@ -29,4 +29,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Controls\" />
+    <Folder Include="Views\Src\" />
+  </ItemGroup>
+
 </Project>
