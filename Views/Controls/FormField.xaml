@@ -13,6 +13,6 @@
                    Foreground="{StaticResource Dark}"
                    Margin="0 0 0 16"
                    />
-        <TextBox x:Name="textBox" Height="64" HorizontalAlignment="Stretch" BorderBrush="{StaticResource Secondary}" BorderThickness="2" Text="{Binding FieldText, RelativeSource={RelativeSource AncestorType=UserControl}}" FontSize="16" VerticalContentAlignment="Center" Padding="16,0" Foreground="Gray"/>
+        <TextBox x:Name="textBox" Height="{Binding Height, RelativeSource={RelativeSource AncestorType=UserControl}}" HorizontalAlignment="Stretch" BorderBrush="{StaticResource Secondary}" BorderThickness="2" Text="{Binding FieldText, RelativeSource={RelativeSource AncestorType=UserControl}}" FontSize="16" VerticalContentAlignment="{Binding VerticalAlignment, RelativeSource={RelativeSource AncestorType=UserControl}}" Padding="16" Foreground="Gray"/>
     </StackPanel>
 </UserControl>

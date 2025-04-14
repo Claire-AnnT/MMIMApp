@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="MMIMApp.Views.ProductViews.ViewProduct"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MMIMApp.Views.ProductViews"
+             xmlns:control="clr-namespace:MMIMApp.Views.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="1024" d:DesignWidth="1440">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <control:SideNav HorizontalAlignment="Left"/>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <control:PageHeader VerticalAlignment="Top" Grid.Row="0"/>
+
+                <Grid Background="{StaticResource Light}" Grid.Row="1">
+                    <Border x:Name="addUserForm" BorderThickness="0" Padding="64" Background="{StaticResource White}" Width="736" Height="Auto" VerticalAlignment="Top" Margin="0 64 0 0">
+                        <StackPanel Orientation="Vertical">
+                            <Grid Margin="0 0 0 32">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Product" Style="{StaticResource T4}" VerticalAlignment="Center" Grid.Column="0"/>
+                                <TextBlock Text="Brand" Style="{StaticResource T3}" VerticalAlignment="Center" Grid.Column="1" Margin="32 0 0 0" Foreground="{StaticResource Primary}"/>
+                                <Border VerticalAlignment="Center" Background="{StaticResource Info}" CornerRadius="32" Padding="16 8" HorizontalAlignment="Right" Grid.Column="2">
+                                    <TextBlock Text="Status" Style="{StaticResource T2}" Foreground="White"/>
+                                </Border>
+                            </Grid>
+
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 32">
+                                <TextBlock Text="Category:" Style="{StaticResource T2}" FontWeight="Bold"/>
+                                <TextBlock Text="Category" Style="{StaticResource T2}" Margin="16 0 0 0"/>
+                            </StackPanel>
+
+                            <Grid Margin="0 0 0 32">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                    <TextBlock Text="Units:" Style="{StaticResource T2}" FontWeight="Bold"/>
+                                    <TextBlock Text="0" Style="{StaticResource T2}" Margin="16 0 0 0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Column="2">
+                                    <TextBlock Text="Unit Price:" Style="{StaticResource T2}" FontWeight="Bold"/>
+                                    <TextBlock Text="$0.00" Style="{StaticResource T2}" Margin="16 0 0 0"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Description:" Style="{StaticResource T2}" FontWeight="Bold" Margin="0 0 0 16"/>
+                                <TextBlock Text="Lorem ipsum dolor amit." Style="{StaticResource T1}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
