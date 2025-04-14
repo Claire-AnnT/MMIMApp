@@ -31,8 +31,12 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Views\Controls\" />
-    <Folder Include="Views\Src\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Src\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="MMIMApp.Views.UserViews.SearchUsers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MMIMApp.Views.UserViews"
+             xmlns:control="clr-namespace:MMIMApp.Views.Controls"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="1024" d:DesignWidth="1440">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource Secondary}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="16"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <control:SideNav HorizontalAlignment="Left"/>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <control:PageHeader VerticalAlignment="Top" Grid.Row="0" Title="Users"/>
+
+            <Grid Background="{StaticResource Light}" Grid.Row="1">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="64 64">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="0 16 ">
+                            <Button x:Name="filterBtn">
+                                <md:PackIcon Kind="Filter" Height="24" Width="24" Foreground="{StaticResource White}"/>
+                            </Button>
+
+                            <TextBox x:Name="searchBox" Text="Search..." Foreground="Gray" FontSize="16" Padding="16" Margin="16 0 0 0" BorderThickness="0" Background="White"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                            <Button x:Name="addUserBtn" Margin="0 16">
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="Plus" Width="24" Height="24" Foreground="White"/>
+                                    <TextBlock Text="Add User" Style="{StaticResource T1}" Foreground="White" Margin="16 0 0 0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="exportBtn" Margin="16 16 0 16">
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="ExportVariant" Width="24" Height="24" Foreground="White"/>
+                                    <TextBlock Text="Export" Style="{StaticResource T1}" Foreground="White" Margin="16 0 0 0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+                    <DataGrid Style="{x:Null}" Background="White" BorderThickness="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" FontSize="16" GridLinesVisibility="None">
+                        <DataGrid.Columns>
+                             <DataGridCheckBoxColumn CanUserResize="False" Width="Auto">
+                                <DataGridCheckBoxColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox/>
+                                    </DataTemplate>
+                                </DataGridCheckBoxColumn.HeaderTemplate>
+                            </DataGridCheckBoxColumn>
+
+                            <DataGridTextColumn Header="Username" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Header="First Name" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Header="Last Name" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Header="Admin" IsReadOnly="True" Width="Auto"/>
+
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Button Padding="0" Background="Transparent" Margin="0" Width="Auto">
+                                            <md:PackIcon Kind="DotsHorizontal" Width="24" Height="24" Foreground="Gray" Margin="0"/>
+
+                                            <Button.ContextMenu>
+                                                <ContextMenu Background="{StaticResource Light}" Foreground="{StaticResource Secondary}">
+                                                    <MenuItem>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <md:PackIcon Kind="Pencil" Height="24" Width="24" VerticalAlignment="Center"/>
+                                                            <TextBlock Text="Edit" Style="{StaticResource T1}" Margin="16 0 0 0" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </MenuItem>
+                                                    <MenuItem>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <md:PackIcon Kind="Delete" Height="24" Width="24" VerticalAlignment="Center"/>
+                                                            <TextBlock Text="Delete" Style="{StaticResource T1}" Margin="16 0 0 0" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </MenuItem>
+                                                </ContextMenu>
+                                            </Button.ContextMenu>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                        
+                        
+                    </DataGrid>
+
+                    <Grid Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Showing 10 out 100" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" Margin="16" Grid.Column="0"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
+                            <StackPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Padding" Value="16"/>
+                                    <Setter Property="FontSize" Value="16"/>
+                                    <Setter Property="Foreground" Value="Gray"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button x:Name="prevBtn">
+                                <md:PackIcon Kind="ChevronLeft" Width="24" Height="24"/>
+                            </Button>
+                            <Button Content="1" Foreground="{StaticResource Primary}"/>
+                            <Button Content="2"/>
+                            <Button Content="3"/>
+                            <Button x:Name="nextBtn">
+                                <md:PackIcon Kind="ChevronRight" Width="24" Height="24"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

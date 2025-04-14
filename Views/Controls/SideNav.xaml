@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="MMIMApp.Views.Controls.SideNav"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MMIMApp.Views.Controls"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="1024" d:DesignWidth="363">
+    <UserControl.Resources>
+        <Style TargetType="Button" BasedOn="{x:Null}">
+            <Setter Property="Background" Value="{StaticResource Dark}"/>
+            <Setter Property="Foreground" Value="{StaticResource Light}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid Background="{StaticResource Dark}">
+        <StackPanel Orientation="Vertical" Margin="32" HorizontalAlignment="Center">
+            <Image Source="pack://application:,,,/MMIMApp;component/Views/Src/Logo.png" Width="96" Margin="0 0 0 16" />
+
+            <!--User Details-->
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <Border BorderThickness="0" Width="48" Height="48">
+                    <Rectangle Fill="{StaticResource Light}"/>
+                </Border>
+                
+                <!--User's Names-->
+                <StackPanel Orientation="Vertical" Margin="16 0 0 0">
+                    <TextBlock Text="First Name Last Name" 
+                               Style="{StaticResource T1}" 
+                               Foreground="{StaticResource Light}"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="Username" 
+                        Style="{StaticResource T1}" 
+                       Foreground="{StaticResource Light}"/>
+                </StackPanel>
+
+                <md:PackIcon Kind="Logout" 
+                             Width="48" Height="48" 
+                             Foreground="{StaticResource Light}"
+                             Margin="16 0 0 0"
+                             Cursor="Hand"/>
+            </StackPanel>
+            
+            <!--Buttons-->
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                <Button x:Name="productsBtn" HorizontalContentAlignment="Left" Padding="16" Height="56">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <md:PackIcon Kind="PackageVariantClosed" Width="24" Height="24" Margin="0 0 16 0"/>
+                        <TextBlock Text="Products" Style="{StaticResource T1}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="categoriesBtn" HorizontalContentAlignment="Left" Padding="16" Height="56">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <md:PackIcon Kind="Tag" Width="24" Height="24" Margin="0 0 16 0"/>
+                        <TextBlock Text="Categories" Style="{StaticResource T1}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="usersBtn" HorizontalContentAlignment="Left" Padding="16" Height="56">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <md:PackIcon Kind="AccountBox" Width="24" Height="24" Margin="0 0 16 0"/>
+                        <TextBlock Text="Users" Style="{StaticResource T1}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="documentationBtn" HorizontalContentAlignment="Left" Padding="16" Height="56">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <md:PackIcon Kind="Book" Width="24" Height="24" Margin="0 0 16 0"/>
+                        <TextBlock Text="Documentation" Style="{StaticResource T1}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="repoBtn" HorizontalContentAlignment="Left" Padding="16" Height="56">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <md:PackIcon Kind="Github" Width="24" Height="24" Margin="0 0 16 0"/>
+                        <TextBlock Text="Repository" Style="{StaticResource T1}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>  
+    </Grid>
+</UserControl>

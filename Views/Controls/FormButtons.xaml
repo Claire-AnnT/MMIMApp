@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="MMIMApp.Views.Controls.FormButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MMIMApp.Views.Controls"
+             mc:Ignorable="d" 
+             >
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <Button x:Name="cancelBtn" Padding="32,16" Style="{x:Null}" Background="Transparent" BorderBrush="{StaticResource Secondary}" Margin="0 0 32 0" BorderThickness="2">
+            <TextBlock Text="Cancel" Style="{StaticResource T1}" Foreground="{StaticResource Secondary}"/>
+        </Button>
+        <Button x:Name="submitBtn" Padding="32,16" Style="{x:Null}" Background="{StaticResource Secondary}" BorderThickness="0">
+            <TextBlock Text="{Binding ButtonText, RelativeSource={RelativeSource AncestorType=UserControl}}" Style="{StaticResource T1}" Foreground="{StaticResource White}"/>
+        </Button>
+    </StackPanel>
+</UserControl>
