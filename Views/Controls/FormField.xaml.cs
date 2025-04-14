@@ -35,6 +35,20 @@ namespace MMIMApp.Views.Controls
             get => (string)GetValue(FieldTextProperty);
             set => SetValue(FieldTextProperty, value);
         }
+
+        public static new DependencyProperty HeightProperty = DependencyProperty.Register("Height", typeof(int), typeof(FormField), new PropertyMetadata(64));
+        public new int Height
+        {
+            get => (int)GetValue(HeightProperty);
+            set => SetValue(HeightProperty, value);
+        }
+
+        public static new DependencyProperty VerticalAlignmentProperty = DependencyProperty.Register("VerticalAlignment", typeof(VerticalAlignment), typeof(FormField), new PropertyMetadata(VerticalAlignment.Center));
+        public new VerticalAlignment VerticalAlignment
+        {
+            get => (VerticalAlignment)GetValue(VerticalAlignmentProperty);
+            set => SetValue(VerticalAlignmentProperty, value);
+        }
     }
 
 
