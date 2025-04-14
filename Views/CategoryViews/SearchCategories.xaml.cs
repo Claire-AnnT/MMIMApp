@@ -13,18 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MMIMApp.Views.UserViews
+namespace MMIMApp.Views.CategoryViews
 {
     /// <summary>
-    /// Interaction logic for SearchUsers.xaml
+    /// Interaction logic for SearchCategories.xaml
     /// </summary>
-    public partial class SearchUsers : UserControl
+    public partial class SearchCategories : UserControl
     {
-        public SearchUsers()
+        public SearchCategories()
         {
             InitializeComponent();
         }
 
-      
     }
 }
