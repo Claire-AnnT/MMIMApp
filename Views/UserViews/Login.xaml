@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="MMIMApp.Views.UserViews.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MMIMApp.Views.UserViews"
+             xmlns:control="clr-namespace:MMIMApp.Views.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="1024" d:DesignWidth="1440">
+    <UserControl.Resources>
+        <Style TargetType="Button" BasedOn="{x:Null}">
+            <Setter Property="Background" Value="{StaticResource Secondary}"/>
+            <Setter Property="Foreground" Value="{StaticResource Light}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="32,16"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource Dark}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="1" Source="/Views/Src/Logo.png" Width="496" VerticalAlignment="Center"/>
+
+        <Border Grid.Column="0" Padding="64" BorderThickness="0">
+            <StackPanel Background="{StaticResource White}" VerticalAlignment="Center">
+                <TextBlock Text="Welcome Back" Style="{StaticResource T4}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 64 0 16"/>
+                <control:FormField FieldLabel="Username" Margin="64 0 64 16"/>
+                <control:FormField FieldLabel="Password" Margin="64 0 64 32"/>
+
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 0 0 64">
+                    <Button x:Name="submitBtn" Content="Login" FontSize="16" Margin="0 0 0 8"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Don't have an account?" Style="{StaticResource T1}" />
+                        <TextBlock Text=" Create an account" Style="{StaticResource T1}" Foreground="{StaticResource Secondary}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

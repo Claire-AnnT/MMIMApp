@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="MMIMApp.Views.UserViews.EditUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MMIMApp.Views.UserViews"
+             xmlns:control="clr-namespace:MMIMApp.Views.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="1024" d:DesignWidth="1440">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <control:SideNav HorizontalAlignment="Left"/>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <control:PageHeader VerticalAlignment="Top" Grid.Row="0" Title="Edit User"/>
+
+            <Grid Background="{StaticResource Light}" Grid.Row="1">
+                <Border x:Name="addUserForm" BorderThickness="0" Padding="64" Background="{StaticResource White}" Width="736" Height="550" VerticalAlignment="Top" Margin="64">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <control:FormField FieldLabel="First Name *" Grid.Row="0" Grid.Column="0" Margin="0 0 16 16" FieldText="First Name"/>
+
+                        <control:FormField FieldLabel="Last Name *" Grid.Row="0" Grid.Column="1" Margin="16 0 0 16" FieldText="Lastname"/>
+
+                        <control:FormField FieldLabel="Username *" Grid.Row="1" Grid.Column="0" Margin="0 0 16 16" FieldText="Username"/>
+
+                        <control:FormField FieldLabel="Password *" Grid.Row="1" Grid.Column="1" Margin="16 0 0 16" FieldText="Password"/>
+
+                        <control:FormRadioBtn FieldLabel="Admin?" Grid.Row="2" Margin="0 0 0 16"/>
+
+                        <control:FormButtons Grid.Row="3" ButtonText="Save"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
