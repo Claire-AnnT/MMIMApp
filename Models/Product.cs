@@ -30,7 +30,7 @@ namespace MMIMApp.Models
         public ushort? CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
         public Category? Category { get; set; }
-
+        
         public Product(int id, string name, string brand, decimal unitPrice, int unit, int minUnit, User createdByUser, Category? category=null)
         {
             Id = id;

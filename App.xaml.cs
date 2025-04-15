@@ -9,6 +9,5 @@ public partial class App : Application
         MainWindow = new MainWindow();
         MainWindow.Show();
         base.OnStartup(e);
-        // Initialize the application
     }
 }
