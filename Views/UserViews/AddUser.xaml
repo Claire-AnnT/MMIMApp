@@ -38,17 +38,17 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <control:FormField FieldLabel="First Name *" Grid.Row="0" Grid.Column="0" Margin="0 0 16 16"/>
+                        <control:FormField FieldLabel="First Name *" Grid.Row="0" Grid.Column="0" Margin="0 0 16 16" FieldText="{Binding FirstName}"/>
 
-                        <control:FormField FieldLabel="Last Name *" Grid.Row="0" Grid.Column="1" Margin="16 0 0 16"/>
+                        <control:FormField FieldLabel="Last Name *" Grid.Row="0" Grid.Column="1" Margin="16 0 0 16" FieldText="{Binding LastName}"/>
 
-                        <control:FormField FieldLabel="Username *" Grid.Row="1" Grid.Column="0" Margin="0 0 16 16"/>
+                        <control:FormField FieldLabel="Username *" Grid.Row="1" Grid.Column="0" Margin="0 0 16 16" FieldText="{Binding Username}"/>
 
-                        <control:FormField FieldLabel="Password *" Grid.Row="1" Grid.Column="1" Margin="16 0 0 16"/>
+                        <control:FormField FieldLabel="Password *" Grid.Row="1" Grid.Column="1" Margin="16 0 0 16" FieldText="{Binding Password}"/>
 
-                        <control:FormRadioBtn FieldLabel="Admin?" Grid.Row="2" Margin="0 0 0 16"/>
+                        <control:FormRadioBtn FieldLabel="Admin?" Grid.Row="2" Margin="0 0 0 16" IsChecked="{Binding IsAdmin}"/>
 
-                        <control:FormButtons Grid.Row="3" ButtonText="Add"/>
+                        <control:FormButtons Grid.Row="3" ButtonText="Add" CancelCommand="{Binding CancelCommand}" SubmitCommand="{Binding AddCommand}"/>
                     </Grid>
                 </Border>
             </Grid>

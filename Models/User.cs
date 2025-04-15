@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MMIMApp.Models
 {
-    class User
+    public class User
     {
         [Key]
         public uint Id { get; set; }

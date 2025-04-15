@@ -44,18 +44,25 @@
                         <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="0 16 ">
                             <Button x:Name="filterBtn">
                                 <md:PackIcon Kind="Filter" Height="24" Width="24" Foreground="{StaticResource White}"/>
+
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Is Admin" Command="{Binding FilterCommand}"/>
+                                        <MenuItem Header="Is Not Admin" Command="{Binding FilterCommand}"/>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
                             </Button>
 
-                            <TextBox x:Name="searchBox" Text="Search..." Foreground="Gray" FontSize="16" Padding="16" Margin="16 0 0 0" BorderThickness="0" Background="White" Width="288"/>
+                            <TextBox x:Name="searchBox" Foreground="Gray" FontSize="16" Padding="16" Margin="16 0 0 0" BorderThickness="0" Background="White" Width="288" Text="{Binding SearchQuery}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-                            <Button x:Name="addUserBtn" Margin="0 16">
+                            <Button x:Name="addUserBtn" Margin="0 16" Command="{Binding AddUserCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <md:PackIcon Kind="Plus" Width="24" Height="24" Foreground="White"/>
                                     <TextBlock Text="Add User" Style="{StaticResource T1}" Foreground="White" Margin="16 0 0 0"/>
                                 </StackPanel>
                             </Button>
-                            <Button x:Name="exportBtn" Margin="16 16 0 16">
+                            <Button x:Name="exportBtn" Margin="16 16 0 16" Command="{Binding ExportCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <md:PackIcon Kind="ExportVariant" Width="24" Height="24" Foreground="White"/>
                                     <TextBlock Text="Export" Style="{StaticResource T1}" Foreground="White" Margin="16 0 0 0"/>
@@ -129,7 +136,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Showing 10 out 100" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" Margin="16" Grid.Column="0"/>
+                        <TextBlock Text="{Binding NumPageItems}" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" Margin="16" Grid.Column="0"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
                             <StackPanel.Resources>
                                 <Style TargetType="Button">
@@ -140,13 +147,13 @@
                                     <Setter Property="Foreground" Value="Gray"/>
                                 </Style>
                             </StackPanel.Resources>
-                            <Button x:Name="prevBtn">
+                            <Button x:Name="prevBtn" Command="{Binding PrevPageCommand}">
                                 <md:PackIcon Kind="ChevronLeft" Width="24" Height="24"/>
                             </Button>
                             <Button Content="1" Foreground="{StaticResource Primary}"/>
                             <Button Content="2"/>
                             <Button Content="3"/>
-                            <Button x:Name="nextBtn">
+                            <Button x:Name="nextBtn" Command="{Binding NextPageCommand}">
                                 <md:PackIcon Kind="ChevronRight" Width="24" Height="24"/>
                             </Button>
                         </StackPanel>

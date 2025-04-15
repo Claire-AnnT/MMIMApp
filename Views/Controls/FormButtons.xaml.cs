@@ -31,5 +31,19 @@ namespace MMIMApp.Views.Controls
             get => (string)GetValue(ButtonTextProperty);
             set => SetValue(ButtonTextProperty, value);
         }
+
+        public static DependencyProperty CancelCommandProperty = DependencyProperty.Register("CancelCommand", typeof(ICommand), typeof(FormButtons), new PropertyMetadata(null));
+        public ICommand CancelCommand
+        {
+            get => (ICommand)GetValue(CancelCommandProperty);
+            set => SetValue(CancelCommandProperty, value);
+        }
+
+        public static DependencyProperty SubmitCommandProperty = DependencyProperty.Register("SubmitCommand", typeof(ICommand), typeof(FormButtons), new PropertyMetadata(null));
+        public ICommand SubmitCommand
+        {
+            get => (ICommand)GetValue(SubmitCommandProperty);
+            set => SetValue(SubmitCommandProperty, value);
+        }
     }
 }

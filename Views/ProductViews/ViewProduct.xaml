@@ -34,16 +34,16 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Product" Style="{StaticResource T4}" VerticalAlignment="Center" Grid.Column="0"/>
-                                <TextBlock Text="Brand" Style="{StaticResource T3}" VerticalAlignment="Center" Grid.Column="1" Margin="32 0 0 0" Foreground="{StaticResource Primary}"/>
+                                <TextBlock Text="{Binding ProductName}" Style="{StaticResource T4}" VerticalAlignment="Center" Grid.Column="0"/>
+                                <TextBlock Text="{Binding Brand}" Style="{StaticResource T3}" VerticalAlignment="Center" Grid.Column="1" Margin="32 0 0 0" Foreground="{StaticResource Primary}"/>
                                 <Border VerticalAlignment="Center" Background="{StaticResource Info}" CornerRadius="32" Padding="16 8" HorizontalAlignment="Right" Grid.Column="2">
-                                    <TextBlock Text="Status" Style="{StaticResource T2}" Foreground="White"/>
+                                    <TextBlock Text="{Binding Status}" Style="{StaticResource T2}" Foreground="White"/>
                                 </Border>
                             </Grid>
 
                             <StackPanel Orientation="Horizontal" Margin="0 0 0 32">
                                 <TextBlock Text="Category:" Style="{StaticResource T2}" FontWeight="Bold"/>
-                                <TextBlock Text="Category" Style="{StaticResource T2}" Margin="16 0 0 0"/>
+                                <TextBlock Text="{Binding ProductCategory}" Style="{StaticResource T2}" Margin="16 0 0 0"/>
                             </StackPanel>
 
                             <Grid Margin="0 0 0 32">
@@ -55,18 +55,18 @@
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="0">
                                     <TextBlock Text="Units:" Style="{StaticResource T2}" FontWeight="Bold"/>
-                                    <TextBlock Text="0" Style="{StaticResource T2}" Margin="16 0 0 0"/>
+                                    <TextBlock Text="{Binding CurrentUnits}" Style="{StaticResource T2}" Margin="16 0 0 0"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="2">
                                     <TextBlock Text="Unit Price:" Style="{StaticResource T2}" FontWeight="Bold"/>
-                                    <TextBlock Text="$0.00" Style="{StaticResource T2}" Margin="16 0 0 0"/>
+                                    <TextBlock Text="{Binding UnitPrice}" Style="{StaticResource T2}" Margin="16 0 0 0"/>
                                 </StackPanel>
                             </Grid>
 
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="Description:" Style="{StaticResource T2}" FontWeight="Bold" Margin="0 0 0 16"/>
-                                <TextBlock Text="Lorem ipsum dolor amit." Style="{StaticResource T1}"/>
+                                <TextBlock Text="{Binding Description}" Style="{StaticResource T1}"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>

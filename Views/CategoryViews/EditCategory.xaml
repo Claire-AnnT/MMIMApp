@@ -9,8 +9,8 @@
     <Border Background="White" Padding="64">
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Edit Category" Style="{StaticResource T4}" Margin="0 0 0 32"/>
-            <control:FormField FieldLabel="Category Name" FieldText="Category Name"/>
-            <control:FormButtons ButtonText="Save" Margin="0 64 0 0"/>
+            <control:FormField FieldLabel="Category Name" FieldText="{Binding CategoryName}"/>
+            <control:FormButtons ButtonText="Save" Margin="0 64 0 0" SubmitCommand="{Binding AddCommand}" CancelCommand="{Binding CancelCommand}"/>
         </StackPanel>
     </Border>
 </UserControl>

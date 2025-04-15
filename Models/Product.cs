@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MMIMApp.Models
 {
-    class Product
+    public class Product
     {
         [Key]
         public int Id { get; set; }

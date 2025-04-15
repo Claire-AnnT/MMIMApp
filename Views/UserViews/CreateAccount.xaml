@@ -27,7 +27,7 @@
         <Border Grid.Column="1" Padding="64" BorderThickness="0">
             <StackPanel Background="{StaticResource White}" VerticalAlignment="Center">
                 <TextBlock Text="Create Account" Style="{StaticResource T4}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 64 0 16"/>
-                <control:FormField FieldLabel="Username *" Margin="64 0 64 16"/>
+                <control:FormField FieldLabel="Username *" Margin="64 0 64 16" FieldText="{Binding Username}"/>
 
                 <Grid Margin="64 0 64 16">
                     <Grid.RowDefinitions>
@@ -39,20 +39,22 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <control:FormField Grid.Row="0" Grid.Column="0" FieldLabel="First Name *" Margin="0 0 16 0"/>
+                    <control:FormField Grid.Row="0" Grid.Column="0" FieldLabel="First Name *" Margin="0 0 16 0" FieldText="{Binding FirstName}"/>
 
-                    <control:FormField Grid.Row="0" Grid.Column="1" FieldLabel="Last Name *" Margin="16 0 0 16"/>
+                    <control:FormField Grid.Row="0" Grid.Column="1" FieldLabel="Last Name *" Margin="16 0 0 16" FieldText="{Binding LastName}"/>
 
-                    <control:FormField Grid.Row="1" Grid.Column="0" FieldLabel="Password *" Margin="0 0 16 16"/>
+                    <control:FormField Grid.Row="1" Grid.Column="0" FieldLabel="Password *" Margin="0 0 16 16" FieldText="{Binding Password}"/>
 
-                    <control:FormField Grid.Row="1" Grid.Column="1" FieldLabel="Confirm Password *" Margin="16 0 0 16"/>
+                    <control:FormField Grid.Row="1" Grid.Column="1" FieldLabel="Confirm Password *" Margin="16 0 0 16" FieldText="{Binding Password}"/>
                 </Grid>
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 0 0 64">
-                    <Button x:Name="submitBtn" Content="Create Account" FontSize="16" Margin="0 0 0 8"/>
+                    <Button x:Name="submitBtn" Content="Create Account" FontSize="16" Margin="0 0 0 8" Command="{Binding CreateAccountCommand}"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Already have an account?" Style="{StaticResource T1}" />
-                        <TextBlock Text=" Login" Style="{StaticResource T1}" Foreground="{StaticResource Secondary}"/>
+                        <Button Padding="0" Background="Transparent" Command="{Binding LoginCommand}">
+                            <TextBlock Text=" Login" Style="{StaticResource T1}" Foreground="{StaticResource Secondary}"/>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

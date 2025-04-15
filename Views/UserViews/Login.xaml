@@ -27,15 +27,17 @@
         <Border Grid.Column="0" Padding="64" BorderThickness="0">
             <StackPanel Background="{StaticResource White}" VerticalAlignment="Center">
                 <TextBlock Text="Welcome Back" Style="{StaticResource T4}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 64 0 16"/>
-                <control:FormField FieldLabel="Username" Margin="64 0 64 16"/>
-                <control:FormField FieldLabel="Password" Margin="64 0 64 32"/>
+                <control:FormField FieldLabel="Username" Margin="64 0 64 16" FieldText="{Binding Username}"/>
+                <control:FormField FieldLabel="Password" Margin="64 0 64 32" FieldText="{Binding Password}"/>
 
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 0 0 64">
-                    <Button x:Name="submitBtn" Content="Login" FontSize="16" Margin="0 0 0 8"/>
+                    <Button x:Name="submitBtn" Content="Login" FontSize="16" Margin="0 0 0 8" Command="{Binding LoginCommand}"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Don't have an account?" Style="{StaticResource T1}" />
-                        <TextBlock Text=" Create an account" Style="{StaticResource T1}" Foreground="{StaticResource Secondary}"/>
+                        <Button Padding="0" Background="Transparent" Command="{Binding CreateAccountCommand}">
+                            <TextBlock Text=" Create an account" Style="{StaticResource T1}" Foreground="{StaticResource Secondary}"/>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

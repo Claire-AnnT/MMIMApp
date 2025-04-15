@@ -31,5 +31,12 @@ namespace MMIMApp.Views.Controls
             get => (string)GetValue(FieldLabelProperty);
             set => SetValue(FieldLabelProperty, value);
         }
+
+        public static DependencyProperty IsCheckedProperty = DependencyProperty.Register("IsChecked", typeof(bool), typeof(FormRadioBtn), new PropertyMetadata(false));
+        public bool IsChecked
+        {
+            get => (bool)GetValue(IsCheckedProperty);
+            set => SetValue(IsCheckedProperty, value);
+        }
     }
 }

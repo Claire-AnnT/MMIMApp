@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              >
     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-        <Button x:Name="cancelBtn" Padding="32,16" Style="{x:Null}" Background="Transparent" BorderBrush="{StaticResource Secondary}" Margin="0 0 32 0" BorderThickness="2">
+        <Button x:Name="cancelBtn" Command="{Binding CancelCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"  Padding="32,16" Style="{x:Null}" Background="Transparent" BorderBrush="{StaticResource Secondary}" Margin="0 0 32 0" BorderThickness="2">
             <TextBlock Text="Cancel" Style="{StaticResource T1}" Foreground="{StaticResource Secondary}"/>
         </Button>
-        <Button x:Name="submitBtn" Padding="32,16" Style="{x:Null}" Background="{StaticResource Secondary}" BorderThickness="0">
+        <Button x:Name="submitBtn" Command="{Binding SubmitCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"  Padding="32,16" Style="{x:Null}" Background="{StaticResource Secondary}" BorderThickness="0">
             <TextBlock Text="{Binding ButtonText, RelativeSource={RelativeSource AncestorType=UserControl}}" Style="{StaticResource T1}" Foreground="{StaticResource White}"/>
         </Button>
     </StackPanel>

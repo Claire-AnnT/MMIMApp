@@ -34,14 +34,14 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <control:FormField FieldLabel="Product Name *" Grid.Column="0" Margin="0 0 8 0"/>
+                                <control:FormField FieldLabel="Product Name *" Grid.Column="0" Margin="0 0 8 0" FieldText="{Binding ProductName}"/>
 
-                                <control:FormField FieldLabel="Brand" Grid.Column="1" Margin="4 0"/>
+                                <control:FormField FieldLabel="Brand *" Grid.Column="1" Margin="4 0" FieldText="{Binding Brand}"/>
 
-                                <control:FormComboBox FieldLabel="Category" Grid.Column="2" Margin="8 0 0 0"/>
+                                <control:FormComboBox FieldLabel="Category" Grid.Column="2" Margin="8 0 0 0" SelectedItemId="{Binding SelectedCategoryId}" ItemSource="{Binding Categories}"/>
                             </Grid>
 
-                            <control:FormField FieldLabel="Description" Height="200" Margin="0 0 0 16"/>
+                            <control:FormField FieldLabel="Description" Height="200" Margin="0 0 0 16" FieldText="{Binding Description}"/>
 
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -50,14 +50,14 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <control:FormField FieldLabel="Unit Price *" Grid.Column="0" Margin="0 0 8 0"/>
+                                <control:FormField FieldLabel="Unit Price *" Grid.Column="0" Margin="0 0 8 0" FieldText="{Binding UnitPrice}"/>
 
-                                <control:FormField FieldLabel="Current Units *" Grid.Column="1" Margin="4 0"/>
+                                <control:FormField FieldLabel="Current Units *" Grid.Column="1" Margin="4 0" FieldText="{Binding CurrentUnits}"/>
 
-                                <control:FormField FieldLabel="Minimum Units" Grid.Column="2" Margin="8 0 0 0"/>
+                                <control:FormField FieldLabel="Minimum Units" Grid.Column="2" Margin="8 0 0 0" FieldText="{Binding MinUnits}"/>
                             </Grid>
 
-                            <control:FormButtons ButtonText="Add" Margin="0 64 0 0"/>
+                            <control:FormButtons ButtonText="Add" Margin="0 64 0 0" SubmitCommand="{Binding AddCommand}" CancelCommand="{Binding CancelCommand}"/>
                         </StackPanel>
                     </Border>
                 </Grid>

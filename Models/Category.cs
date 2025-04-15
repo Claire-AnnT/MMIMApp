@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MMIMApp.Models
 {
-    class Category
+    public class Category
     {
         [Key]
         public ushort Id { get; set; }
