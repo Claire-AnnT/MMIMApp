@@ -18,13 +18,14 @@
     </UserControl.Resources>
     <Grid Background="{StaticResource Dark}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Grid.Column="1" Source="/Views/Src/Logo.png" Width="496" VerticalAlignment="Center"/>
+        
 
-        <Border Grid.Column="0" Padding="64" BorderThickness="0">
+        <Border Grid.Column="1" Padding="48" BorderThickness="0">
             <StackPanel Background="{StaticResource White}" VerticalAlignment="Center">
                 <TextBlock Text="Welcome Back" Style="{StaticResource T4}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 64 0 16"/>
                 <control:FormField FieldLabel="Username" Margin="64 0 64 16" FieldText="{Binding Username}"/>

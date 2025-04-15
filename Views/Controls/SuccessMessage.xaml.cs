@@ -24,5 +24,15 @@ namespace MMIMApp.Views.Controls
         {
             InitializeComponent();
         }
+
+        public string SuccessMessageText
+        {
+            get => (string)GetValue(SuccessMessageTextProperty);
+            set => SetValue(SuccessMessageTextProperty, value);
+        }
+
+        public static  DependencyProperty SuccessMessageTextProperty =
+            DependencyProperty.Register("SuccessMessageText", typeof(string), typeof(SuccessMessage), new PropertyMetadata(string.Empty));
+
     }
 }

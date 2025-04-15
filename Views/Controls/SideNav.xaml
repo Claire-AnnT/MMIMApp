@@ -18,8 +18,7 @@
     
     <Grid Background="{StaticResource Dark}">
         <StackPanel Orientation="Vertical" Margin="32" HorizontalAlignment="Center">
-            <Image Source="pack://application:,,,/MMIMApp;component/Views/Src/Logo.png" Width="96" Margin="0 0 0 16" />
-
+       
             <!--User Details-->
             <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                 <Border BorderThickness="0" Width="48" Height="48">
@@ -27,7 +26,7 @@
                 </Border>
                 
                 <!--User's Names-->
-                <StackPanel Orientation="Vertical" Margin="16 0 0 0">
+                <StackPanel Orientation="Vertical" Margin="16 0 0 0" Cursor="Hand">
                     <TextBlock Text="First Name Last Name" 
                                Style="{StaticResource T1}" 
                                Foreground="{StaticResource Light}"
@@ -37,11 +36,13 @@
                        Foreground="{StaticResource Light}"/>
                 </StackPanel>
 
-                <md:PackIcon Kind="Logout" 
-                             Width="48" Height="48" 
-                             Foreground="{StaticResource Light}"
-                             Margin="16 0 0 0"
-                             Cursor="Hand"/>
+                <Button Command="{Binding LogoutCommand}">
+                    <md:PackIcon Kind="Logout" 
+             Width="48" Height="48" 
+             Foreground="{StaticResource Light}"
+             Margin="16 0 0 0"
+             Cursor="Hand"/>
+                </Button>
             </StackPanel>
             
             <!--Buttons-->

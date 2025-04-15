@@ -6,12 +6,16 @@
              xmlns:local="clr-namespace:MMIMApp.Views.Controls"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
-    <Border BorderThickness="0" Padding="64 32" Background="White">
-        <StackPanel Orientation="Vertical">
-            <md:PackIcon Kind="CheckCircle" Width="48" Height="48" Foreground="{StaticResource Success}" HorizontalAlignment="Center"/>
-            <TextBlock Text="Successful" Style="{StaticResource T2}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0"/>
-            <TextBlock Text="The operation was successful." Style="{StaticResource T1}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0"/>
-            <Button Content="Okay" Background="{StaticResource Secondary}" FontWeight="Regular" HorizontalAlignment="Center" Padding="32 15" Style="{x:Null}" BorderThickness="0" Foreground="White" Margin="0 32 0 0"/>
-        </StackPanel>
-    </Border>
+    <Grid>
+        <Rectangle Fill="Black" Opacity="0.4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False"/>
+
+        <Border BorderThickness="0" Padding="64 32" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="300" MinWidth="400">
+            <StackPanel Orientation="Vertical">
+                <md:PackIcon Kind="CheckCircle" Width="48" Height="48" Foreground="{StaticResource Success}" HorizontalAlignment="Center"/>
+                <TextBlock Text="Successful" Style="{StaticResource T2}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0"/>
+                <TextBlock Text="{Binding SuccessMessageText, RelativeSource={RelativeSource AncestorType=UserControl}}" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0" TextWrapping="Wrap"/>
+                <Button Content="Okay" Background="{StaticResource Secondary}" FontWeight="Regular" HorizontalAlignment="Center" Padding="32 15" Style="{x:Null}" BorderThickness="0" Foreground="White" Margin="0 32 0 0" Command="{Binding HideSuccessMsgCommand}" Cursor="Hand" Panel.ZIndex="1"/>
+            </StackPanel>
+        </Border>
+    </Grid>
 </UserControl>

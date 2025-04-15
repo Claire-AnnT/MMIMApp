@@ -32,18 +32,6 @@ namespace MMIMApp.Views.Controls
             set => SetValue(FieldLabelProperty, value);
         }
 
-        public static DependencyProperty SelectedItemIdProperty = DependencyProperty.Register("SelectedItemId", typeof(int), typeof(FormComboBox), new PropertyMetadata(0));
-        public int SelectedItemId
-        {
-            get => (int)GetValue(SelectedItemIdProperty);
-            set => SetValue(SelectedItemIdProperty, value);
-        }
-
-        public static DependencyProperty ItemSourceProperty = DependencyProperty.Register("ItemSource", typeof(IEnumerable<ComboBoxItem>), typeof(FormComboBox), new PropertyMetadata(null));
-        public IEnumerable<ComboBoxItem> ItemSource
-        {
-            get => (IEnumerable<ComboBoxItem>)GetValue(ItemSourceProperty);
-            set => SetValue(ItemSourceProperty, value);
-        }
+        
     }
 }

@@ -24,7 +24,7 @@
             <control:PageHeader VerticalAlignment="Top" Grid.Row="0" Title="Edit User"/>
 
             <Grid Background="{StaticResource Light}" Grid.Row="1">
-                <Border x:Name="addUserForm" BorderThickness="0" Padding="64" Background="{StaticResource White}" Width="736" Height="550" VerticalAlignment="Top" Margin="64">
+                <Border x:Name="addUserForm" BorderThickness="0" Padding="48" Background="{StaticResource White}"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="48">
                     <Grid VerticalAlignment="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>

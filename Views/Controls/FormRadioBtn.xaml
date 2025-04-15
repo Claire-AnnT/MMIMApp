@@ -12,6 +12,6 @@
                    Foreground="{StaticResource Dark}"
                    Margin="0 0 0 8"
                    />
-        <ToggleButton Grid.Row="2" Height="64" Width="64" Background="{StaticResource Primary}" Foreground="{StaticResource Primary}" BorderBrush="{StaticResource Secondary}" HorizontalAlignment="Left" IsChecked="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+        <ToggleButton Grid.Row="2" Height="64" Width="64" Background="{StaticResource Primary}" Foreground="{StaticResource Primary}" BorderBrush="{StaticResource Secondary}" HorizontalAlignment="Left" IsChecked="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=UserControl}}" Cursor="Hand"/>
     </StackPanel>
 </UserControl>

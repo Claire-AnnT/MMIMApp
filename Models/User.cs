@@ -23,12 +23,12 @@ namespace MMIMApp.Models
         public string LastName { get; set; } = null!;
         [Required]
         public bool IsAdmin { get; set; } = false;
+
         public ICollection<Product>? Products { get; set; }
         public ICollection<Category>? Categories { get; set; }
 
-        public User(uint id, string username, string password, string firstName, string lastName, bool isAdmin)
+        public User(string username, string password, string firstName, string lastName, bool isAdmin)
         {
-            Id = id;
             Username = username;
             SetPassword(password);
             FirstName = firstName;

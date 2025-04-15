@@ -25,7 +25,7 @@
                 <control:PageHeader VerticalAlignment="Top" Grid.Row="0" Title="Edit Product"/>
 
                 <Grid Background="{StaticResource Light}" Grid.Row="1">
-                    <Border x:Name="addUserForm" BorderThickness="0" Padding="64" Background="{StaticResource White}" Width="736" Height="Auto" VerticalAlignment="Top" Margin="0 64 0 0">
+                    <Border x:Name="addUserForm" BorderThickness="0" Padding="48" Background="{StaticResource White}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="48">
                         <StackPanel Orientation="Vertical"   >
                             <Grid Margin="0 0 0 16">
                                 <Grid.ColumnDefinitions>
@@ -38,10 +38,10 @@
 
                                 <control:FormField FieldLabel="Brand" Grid.Column="1" Margin="4 0" FieldText="{Binding Brand}"/>
 
-                                <control:FormComboBox FieldLabel="{Binding SelectedCategoryId}" Grid.Column="2" Margin="8 0 0 0"/>
+                                <control:FormComboBox FieldLabel="Category" Grid.Column="2" Margin="8 0 0 0"/>
                             </Grid>
 
-                            <control:FormField FieldLabel="Description" Height="200" Margin="0 0 0 16" FieldText="{Binding Description}" VerticalAlignment="Top"/>
+                            <control:FormField FieldLabel="Description" Height="60" Margin="0 0 0 16" FieldText="{Binding Description}" VerticalAlignment="Top"/>
 
                             <Grid>
                                 <Grid.ColumnDefinitions>

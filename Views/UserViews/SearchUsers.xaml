@@ -42,18 +42,19 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="0 16 ">
-                            <Button x:Name="filterBtn">
+                            <Button x:Name="filterBtn" Click="ShowContextMenu_Click">
                                 <md:PackIcon Kind="Filter" Height="24" Width="24" Foreground="{StaticResource White}"/>
 
-                                <Button.ContextMenu>
+                                <Button.ContextMenu >
                                     <ContextMenu>
-                                        <MenuItem Header="Is Admin" Command="{Binding FilterCommand}"/>
-                                        <MenuItem Header="Is Not Admin" Command="{Binding FilterCommand}"/>
+                                        <MenuItem Header="Is Admin" Command="{Binding FilterByAdminCommand}"/>
+                                        <MenuItem Header="Is Not Admin" Command="{Binding FilterByNotAdminCommand}"/>
+                                        <MenuItem Header="Clear Filters" Command="{Binding ClearFiltersCommand}"/>
                                     </ContextMenu>
                                 </Button.ContextMenu>
                             </Button>
 
-                            <TextBox x:Name="searchBox" Foreground="Gray" FontSize="16" Padding="16" Margin="16 0 0 0" BorderThickness="0" Background="White" Width="288" Text="{Binding SearchQuery}"/>
+                            <TextBox x:Name="searchBox" Foreground="Gray" FontSize="16" Padding="16" Margin="16 0 0 0" BorderThickness="0" Background="White" Width="288" Text="{Binding SearchString,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
                             <Button x:Name="addUserBtn" Margin="0 16" Command="{Binding AddUserCommand}">
@@ -71,64 +72,38 @@
                         </StackPanel>
                     </Grid>
 
-                    <DataGrid Style="{x:Null}" Background="White" BorderThickness="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" FontSize="16" GridLinesVisibility="None" HorizontalAlignment="Stretch">
+                    <DataGrid ItemsSource="{Binding PagedUsers}" AutoGenerateColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionMode="Single" SelectedItem="{Binding SelectedUser, Mode=TwoWay}">
                         <DataGrid.Columns>
-                             <DataGridCheckBoxColumn CanUserResize="False" Width="Auto">
-                                <DataGridCheckBoxColumn.HeaderTemplate>
+                            <DataGridTextColumn Header="Username" Binding="{Binding Username}" SortMemberPath="Username" Width="*"/>
+
+                            <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" SortMemberPath="FirstName" Width="*"/>
+
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" SortMemberPath="LastName" Width="*"/>
+
+                            <DataGridTextColumn Header="Admin" Binding="{Binding IsAdmin}" Width="*"/>
+
+                            <DataGridTemplateColumn Header="Actions" Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox/>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Command="{Binding DataContext.EditUserCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                CommandParameter="{Binding}" 
+                                Margin="5" Background="Transparent" Padding="0">
+                                                <md:PackIcon Kind="Pencil" Width="24" Height="24" Foreground="{StaticResource Info}"/> 
+                                            </Button>
+
+                                            <Button Command="{Binding DataContext.DeleteUserCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                CommandParameter="{Binding}" 
+                                Background="Transparent" Padding="0">
+                                                <md:PackIcon Kind="Delete" Width="24" Height="24" Foreground="{StaticResource Danger}"/>
+                                            </Button>
+                                        </StackPanel>
                                     </DataTemplate>
-                                </DataGridCheckBoxColumn.HeaderTemplate>
-                            </DataGridCheckBoxColumn>
-
-                            <DataGridTextColumn Header="Username" IsReadOnly="True" Width="Auto"/>
-                            <DataGridTextColumn Header="First Name" IsReadOnly="True" Width="Auto"/>
-                            <DataGridTextColumn Header="Last Name" IsReadOnly="True" Width="Auto"/>
-                            <DataGridTextColumn Header="Admin" IsReadOnly="True" Width="Auto"/>
-
-                            <DataGridTemplateColumn Width="*">
-                                <DataGridTemplateColumn.HeaderStyle>
-                                    <Style TargetType="DataGridColumnHeader">
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <!-- Remove gray bar -->
-                                        <Setter Property="BorderBrush" Value="Transparent"/>
-                                        <!-- Remove any borders -->
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Setter Property="Padding" Value="0"/>
-                                    </Style>
-                                </DataGridTemplateColumn.HeaderStyle>
-                                <DataGridTemplateColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Button Padding="0" Background="Transparent" Margin="16" Width="Auto" HorizontalAlignment="Right">
-                                            <md:PackIcon Kind="DotsHorizontal" Width="24" Height="24" Foreground="Gray" Margin="0"/>
-
-                                            <Button.ContextMenu>
-                                                <ContextMenu Background="{StaticResource Light}" Foreground="{StaticResource Secondary}">
-                                                    <MenuItem>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <md:PackIcon Kind="Pencil" Height="24" Width="24" VerticalAlignment="Center"/>
-                                                            <TextBlock Text="Edit" Style="{StaticResource T1}" Margin="16 0 0 0" VerticalAlignment="Center"/>
-                                                        </StackPanel>
-                                                    </MenuItem>
-                                                    <MenuItem>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <md:PackIcon Kind="Delete" Height="24" Width="24" VerticalAlignment="Center"/>
-                                                            <TextBlock Text="Delete" Style="{StaticResource T1}" Margin="16 0 0 0" VerticalAlignment="Center"/>
-                                                        </StackPanel>
-                                                    </MenuItem>
-                                                </ContextMenu>
-                                            </Button.ContextMenu>
-                                        </Button>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.HeaderTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                        
-                        
+                        </DataGrid.Columns>   
                     </DataGrid>
-
+                    
                     <Grid Background="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -137,7 +112,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="{Binding NumPageItems}" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" Margin="16" Grid.Column="0"/>
-                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
                             <StackPanel.Resources>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="Transparent"/>
@@ -150,9 +125,7 @@
                             <Button x:Name="prevBtn" Command="{Binding PrevPageCommand}">
                                 <md:PackIcon Kind="ChevronLeft" Width="24" Height="24"/>
                             </Button>
-                            <Button Content="1" Foreground="{StaticResource Primary}"/>
-                            <Button Content="2"/>
-                            <Button Content="3"/>
+                            
                             <Button x:Name="nextBtn" Command="{Binding NextPageCommand}">
                                 <md:PackIcon Kind="ChevronRight" Width="24" Height="24"/>
                             </Button>
@@ -160,6 +133,7 @@
                     </Grid>
                 </StackPanel>
             </Grid>
+            <control:SuccessMessage Grid.Row="1" DataContext="{Binding}" SuccessMessageText="{Binding SuccessMsgBody}" Visibility="{Binding SuccessMsgVisibility}"/>
         </Grid>
     </Grid>
 </UserControl>

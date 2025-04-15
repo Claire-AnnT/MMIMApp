@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:MMIMApp"
         mc:Ignorable="d"
         Title="MMIM" 
-        Height="450" 
-        Width="800">
+        d:DesignHeight="1024" d:DesignWidth="1440"
+        xmlns:views="clr-namespace:MMIMApp.Views.UserViews"
+        WindowState="Maximized">
 
 
     <Grid>
-
+        <views:SearchUsers DataContext="{Binding CurrentViewModel}"/>
     </Grid>
 
 

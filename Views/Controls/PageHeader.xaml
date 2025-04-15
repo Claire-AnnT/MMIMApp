@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MMIMApp.Views.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="180" d:DesignWidth="1077">
+             d:DesignHeight="0" d:DesignWidth="1077">
     <Grid Background="{StaticResource White}">
-        <Border BorderThickness="0" Padding="64,32">
+        <Border BorderThickness="0" Padding="48,24">
             <TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=UserControl}}" Style="{StaticResource T6}" Foreground="{StaticResource Dark}"/>
         </Border>
     </Grid>

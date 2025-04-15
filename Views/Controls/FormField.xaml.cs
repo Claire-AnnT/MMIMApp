@@ -29,14 +29,16 @@ namespace MMIMApp.Views.Controls
             set => SetValue(FieldLabelProperty, value);
         }
 
-        public static DependencyProperty FieldTextProperty = DependencyProperty.Register("FieldText", typeof(string), typeof(FormField), new PropertyMetadata(string.Empty));
+        public static DependencyProperty FieldTextProperty = DependencyProperty.Register("FieldText", typeof(string), typeof(FormField), new FrameworkPropertyMetadata(
+            string.Empty,
+            FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
         public string FieldText
         {
             get => (string)GetValue(FieldTextProperty);
             set => SetValue(FieldTextProperty, value);
         }
 
-        public static new DependencyProperty HeightProperty = DependencyProperty.Register("Height", typeof(int), typeof(FormField), new PropertyMetadata(64));
+        public static new DependencyProperty HeightProperty = DependencyProperty.Register("Height", typeof(int), typeof(FormField), new PropertyMetadata(48));
         public new int Height
         {
             get => (int)GetValue(HeightProperty);
