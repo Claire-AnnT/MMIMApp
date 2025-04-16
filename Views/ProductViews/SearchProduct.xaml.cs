@@ -26,5 +26,16 @@ namespace MMIMApp.Views.ProductViews
             InitializeComponent();
             DataContext = new SearchProductsViewModel();
         }
+
+        private void ShowContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button button)
+            {
+                button.ContextMenu.IsOpen = true;
+                button.ContextMenu.StaysOpen = false;
+                button.ContextMenu.PlacementTarget = button;
+                button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            }
+        }
     }
 }

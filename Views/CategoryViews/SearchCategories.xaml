@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:MMIMApp.Views.CategoryViews"
              xmlns:control="clr-namespace:MMIMApp.Views.Controls"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cviews="clr-namespace:MMIMApp.Views.CategoryViews"
              mc:Ignorable="d" 
              d:DesignHeight="1024" d:DesignWidth="1440">
     <UserControl.Resources>
@@ -42,20 +43,17 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="0 16 " HorizontalAlignment="Stretch">
-                            <Button x:Name="filterBtn">
-                                <md:PackIcon Kind="Filter" Height="24" Width="24" Foreground="{StaticResource White}"/>
-                            </Button>
 
-                            <TextBox x:Name="searchBox" Text="Search..." Foreground="Gray" FontSize="16" Padding="16" Margin="16 0 0 0" BorderThickness="0" Background="White" Width="288"/>
+                            <TextBox x:Name="searchBox" Text="{Binding SearchString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="Gray" FontSize="16" Padding="16" BorderThickness="0" Background="White" Width="288"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-                            <Button x:Name="addUserBtn" Margin="0 16">
+                            <Button x:Name="addUserBtn" Margin="0 16" Command="{Binding ShowAddView}">
                                 <StackPanel Orientation="Horizontal">
                                     <md:PackIcon Kind="Plus" Width="24" Height="24" Foreground="White"/>
                                     <TextBlock Text="Add Category" Style="{StaticResource T1}" Foreground="White" Margin="16 0 0 0"/>
                                 </StackPanel>
                             </Button>
-                            <Button x:Name="exportBtn" Margin="16 16 0 16">
+                            <Button x:Name="exportBtn" Margin="16 16 0 16" Command="{Binding ExportCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <md:PackIcon Kind="ExportVariant" Width="24" Height="24" Foreground="White"/>
                                     <TextBlock Text="Export" Style="{StaticResource T1}" Foreground="White" Margin="16 0 0 0"/>
@@ -64,63 +62,32 @@
                         </StackPanel>
                     </Grid>
 
-                    <DataGrid Style="{x:Null}" Background="White" BorderThickness="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" FontSize="16" GridLinesVisibility="None" HorizontalAlignment="Stretch">
-                        
+                    <DataGrid ItemsSource="{Binding PagedCategories}" AutoGenerateColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionMode="Single" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" FontSize="12">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn CanUserResize="False" Width="Auto">
-                                <DataGridCheckBoxColumn.HeaderTemplate>
+                            <DataGridTextColumn Header="Category" Binding="{Binding Name}" SortMemberPath="Product" Width="*"/>
+                          
+                            <DataGridTemplateColumn Header="Actions" Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox/>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Command="{Binding DataContext.ShowEditView, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+CommandParameter="{Binding}" 
+Margin="5" Background="Transparent" Padding="0">
+                                                <md:PackIcon Kind="Pencil" Width="24" Height="24" Foreground="{StaticResource Info}"/>
+                                            </Button>
+
+                                            <Button Command="{Binding DataContext.ShowConfirmationPopUpCmd, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+CommandParameter="{Binding}" 
+Background="Transparent" Padding="0">
+                                                <md:PackIcon Kind="Delete" Width="24" Height="24" Foreground="{StaticResource Danger}"/>
+                                            </Button>
+                                        </StackPanel>
                                     </DataTemplate>
-                                </DataGridCheckBoxColumn.HeaderTemplate>
-                            </DataGridCheckBoxColumn>
-
-                            <DataGridTextColumn Header="Category" Width="Auto"/>
-                            
-
-                            <DataGridTemplateColumn Width="*">
-                                <DataGridTemplateColumn.HeaderStyle>
-                                    <Style TargetType="DataGridColumnHeader">
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <!-- Remove gray bar -->
-                                        <Setter Property="BorderBrush" Value="Transparent"/>
-                                        <!-- Remove any borders -->
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Setter Property="Padding" Value="0"/>
-                                    </Style>
-                                </DataGridTemplateColumn.HeaderStyle>
-
-                                <DataGridTemplateColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Button Padding="0" Background="Transparent" Margin="16" Width="Auto" HorizontalAlignment="Right">
-                                            <md:PackIcon Kind="DotsHorizontal" Width="24" Height="24" Foreground="Gray" Margin="0"/>
-
-                                            <Button.ContextMenu>
-                                                <ContextMenu Background="{StaticResource Light}" Foreground="{StaticResource Secondary}">
-                                                    <MenuItem>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <md:PackIcon Kind="Pencil" Height="24" Width="24" VerticalAlignment="Center"/>
-                                                            <TextBlock Text="Edit" Style="{StaticResource T1}" Margin="16 0 0 0" VerticalAlignment="Center"/>
-                                                        </StackPanel>
-                                                    </MenuItem>
-                                                    <MenuItem>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <md:PackIcon Kind="Delete" Height="24" Width="24" VerticalAlignment="Center"/>
-                                                            <TextBlock Text="Delete" Style="{StaticResource T1}" Margin="16 0 0 0" VerticalAlignment="Center"/>
-                                                        </StackPanel>
-                                                    </MenuItem>
-                                                </ContextMenu>
-                                            </Button.ContextMenu>
-                                        </Button>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.HeaderTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
-
-
                     </DataGrid>
+
 
                     <Grid Background="White">
                         <Grid.ColumnDefinitions>
@@ -129,8 +96,8 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Showing 10 out 100" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" Margin="16" Grid.Column="0"/>
-                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding NumPageItems}" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" Margin="16" Grid.Column="0"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
                             <StackPanel.Resources>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="Transparent"/>
@@ -140,13 +107,11 @@
                                     <Setter Property="Foreground" Value="Gray"/>
                                 </Style>
                             </StackPanel.Resources>
-                            <Button x:Name="prevBtn">
+                            <Button x:Name="prevBtn" Command="{Binding PreviousPageCommand}">
                                 <md:PackIcon Kind="ChevronLeft" Width="24" Height="24"/>
                             </Button>
-                            <Button Content="1" Foreground="{StaticResource Primary}"/>
-                            <Button Content="2"/>
-                            <Button Content="3"/>
-                            <Button x:Name="nextBtn">
+
+                            <Button x:Name="nextBtn" Command="{Binding NextPageCommand}">
                                 <md:PackIcon Kind="ChevronRight" Width="24" Height="24"/>
                             </Button>
                         </StackPanel>
@@ -154,5 +119,26 @@
                 </StackPanel>
             </Grid>
         </Grid>
+
+        <Popup x:Name="DangerPopup" Placement="Center" StaysOpen="False" IsOpen="{Binding ConfirmationPopUpIsOpen}">
+            <control:DangerMessage/>
+        </Popup>
+
+        <Popup x:Name="SuccesPopup" Placement="Center" StaysOpen="False" IsOpen="{Binding SuccessPopUpIsOpen}">
+            <control:SuccessMessage/>
+        </Popup>
+
+
+        <Popup x:Name="ErrorPopup" Placement="Center" StaysOpen="False" IsOpen="{Binding ErrorPopUpIsOpen}">
+            <control:ErrorMessage/>
+        </Popup>
+
+        <Popup x:Name="AddCategoryPopup" Placement="Center" StaysOpen="True" IsOpen="{Binding AddViewIsOpen}">
+            <cviews:AddCategory/>
+        </Popup>
+
+        <Popup x:Name="EditCategoryPopup" Placement="Center" StaysOpen="True" IsOpen="{Binding EditViewIsOpen}">
+            <cviews:EditCategory/>
+        </Popup>
     </Grid>
 </UserControl>

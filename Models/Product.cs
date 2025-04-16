@@ -38,23 +38,22 @@ namespace MMIMApp.Models
             }
         }
         public int MinUnit { get; set; }
-        [Required]
-        public uint CreatedByUserId { get; set; }
-        [ForeignKey(nameof(CreatedByUserId))]
-        public User CreatedByUser { get; set; } = null!;
         public ushort? CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
         public Category? Category { get; set; }
         
-        public Product(string name, string brand, decimal unitPrice, int unit, int minUnit, User createdByUser, Category? category=null)
+        
+        public Product()
+        {
+        }
+
+        public Product(string name, string brand, decimal unitPrice, int unit, int minUnit, Category? category=null)
         {
             Name = name;
             Brand = brand;
             UnitPrice = unitPrice;
             Units = unit;
             MinUnit = minUnit;
-            CreatedByUserId = createdByUser.Id;
-            CreatedByUser = createdByUser;
             Category = category;
             CategoryId = category?.Id;
         }

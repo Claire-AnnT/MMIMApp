@@ -13,8 +13,8 @@
             <StackPanel Orientation="Vertical">
                 <md:PackIcon Kind="CheckCircle" Width="48" Height="48" Foreground="{StaticResource Success}" HorizontalAlignment="Center"/>
                 <TextBlock Text="Successful" Style="{StaticResource T2}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0"/>
-                <TextBlock Text="{Binding SuccessMessageText, RelativeSource={RelativeSource AncestorType=UserControl}}" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0" TextWrapping="Wrap"/>
-                <Button Content="Okay" Background="{StaticResource Secondary}" FontWeight="Regular" HorizontalAlignment="Center" Padding="32 15" Style="{x:Null}" BorderThickness="0" Foreground="White" Margin="0 32 0 0" Command="{Binding HideSuccessMsgCommand}" Cursor="Hand" Panel.ZIndex="1"/>
+                <TextBlock Text="{Binding SuccessPopUpMessage}" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0" TextWrapping="Wrap"/>
+                <Button Content="Okay" Background="{StaticResource Secondary}" FontWeight="Regular" HorizontalAlignment="Center" Padding="32 15" Style="{x:Null}" BorderThickness="0" Foreground="White" Margin="0 32 0 0" Command="{Binding CloseSuccessPopup}" Cursor="Hand" Panel.ZIndex="1"/>
             </StackPanel>
         </Border>
     </Grid>

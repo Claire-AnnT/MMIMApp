@@ -32,6 +32,9 @@ namespace MMIMApp.Commands
             ExecuteAction(parameter);
         }
 
-        
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

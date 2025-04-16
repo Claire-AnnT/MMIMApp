@@ -1,32 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MMIMApp.Models
 {
-    public class Category
+    public class Category : INotifyPropertyChanged
     {
         [Key]
         public ushort Id { get; set; }
         [Required]
         public string Name { get; set; } = null!;
         public ICollection<Product>? Products { get; set; }
-        [Required]
-        public uint CreatedByUserId { get; set; }
-        [ForeignKey(nameof(CreatedByUserId))]
-        public User CreatedByUser { get; set; } = null!;
 
-        public Category(ushort id, string name,User createdByUser)
+        public Category()
         {
-            Id = id;
+
+        }
+        
+        public Category(string name)
+        {
             Name = name;
-            CreatedByUser = createdByUser;
-            CreatedByUserId = createdByUser.Id;
         }
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null!)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

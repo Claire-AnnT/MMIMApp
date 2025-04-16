@@ -57,7 +57,7 @@
                                 <control:FormField FieldLabel="Minimum Units" Grid.Column="2" Margin="8 0 0 0" FieldText="{Binding MinUnits}"/>
                             </Grid>
 
-                            <control:FormButtons ButtonText="Add" Margin="0 64 0 0" SubmitCommand="{Binding AddCommand}" CancelCommand="{Binding CancelCommand}"/>
+                            <control:FormButtons ButtonText="Add" Margin="0 64 0 0" SubmitCommand="{Binding AddProductCommand}" CancelCommand="{Binding CancelCommand}"/>
                         </StackPanel>
                     </Border>
                 </Grid>

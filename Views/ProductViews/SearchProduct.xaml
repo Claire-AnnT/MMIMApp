@@ -42,11 +42,19 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="0 16 ">
-                            <Button x:Name="filterBtn">
+                            <Button x:Name="filterBtn" Click="ShowContextMenu_Click">
                                 <md:PackIcon Kind="Filter" Height="24" Width="24" Foreground="{StaticResource White}"/>
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Out of Stock" Command="{Binding OutOfStockFilterCommand}"/>
+                                        <MenuItem Header="In Stock" Command="{Binding InStockFilterCommand}"/>
+                                        <MenuItem Header="Low Stock" Command="{Binding LowStockFilterCommand}"/>
+                                        <MenuItem Header="Clear Filters" Command="{Binding ClearFiltersCommand}"/>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
                             </Button>
 
-                            <TextBox x:Name="searchBox" Text="Search..." Foreground="Gray" FontSize="16" Padding="16" Margin="16 0 0 0" BorderThickness="0" Background="White" Width="288"/>
+                            <TextBox x:Name="searchBox" Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray" FontSize="16" Padding="16" Margin="16 0 0 0" BorderThickness="0" Background="White" Width="288"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
                             <Button x:Name="addProductBtn" Margin="0 16">
@@ -55,7 +63,7 @@
                                     <TextBlock Text="Add Product" Style="{StaticResource T1}" Foreground="White" Margin="16 0 0 0"/>
                                 </StackPanel>
                             </Button>
-                            <Button x:Name="exportBtn" Margin="16 16 0 16">
+                            <Button x:Name="exportBtn" Margin="16 16 0 16" Command="{Binding ExportCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <md:PackIcon Kind="ExportVariant" Width="24" Height="24" Foreground="White"/>
                                     <TextBlock Text="Export" Style="{StaticResource T1}" Foreground="White" Margin="16 0 0 0"/>
@@ -64,7 +72,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <DataGrid ItemsSource="{Binding PagedProducts}" AutoGenerateColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionMode="Single" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
+                    <DataGrid ItemsSource="{Binding PagedProducts}" AutoGenerateColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionMode="Single" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" FontSize="12">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Product" Binding="{Binding Name}" SortMemberPath="Product" Width="*"/>
 
@@ -117,8 +125,8 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Showing 10 out 100" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" Margin="16" Grid.Column="0"/>
-                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding NumPageItems}" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" Margin="16" Grid.Column="0"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
                             <StackPanel.Resources>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="Transparent"/>
@@ -128,17 +136,16 @@
                                     <Setter Property="Foreground" Value="Gray"/>
                                 </Style>
                             </StackPanel.Resources>
-                            <Button x:Name="prevBtn">
+                            <Button x:Name="prevBtn" Command="{Binding PreviousPageCommand}">
                                 <md:PackIcon Kind="ChevronLeft" Width="24" Height="24"/>
                             </Button>
-                            <Button Content="1" Foreground="{StaticResource Primary}"/>
-                            <Button Content="2"/>
-                            <Button Content="3"/>
-                            <Button x:Name="nextBtn">
+
+                            <Button x:Name="nextBtn" Command="{Binding NextPageCommand}">
                                 <md:PackIcon Kind="ChevronRight" Width="24" Height="24"/>
                             </Button>
                         </StackPanel>
                     </Grid>
+
                 </StackPanel>
             </Grid>
         </Grid>
@@ -146,5 +153,14 @@
         <Popup x:Name="DangerPopup" Placement="Center" StaysOpen="False" IsOpen="{Binding ConfirmationPopUpIsOpen}">
             <control:DangerMessage/>
         </Popup>
+
+        <Popup x:Name="SuccesPopup" Placement="Center" StaysOpen="False" IsOpen="{Binding SuccessPopUpIsOpen}">
+            <control:SuccessMessage/>
+        </Popup>
+
+        
+            <Popup x:Name="ErrorPopup" Placement="Center" StaysOpen="False" IsOpen="{Binding ErrorPopUpIsOpen}">
+                <control:ErrorMessage/>
+            </Popup>
     </Grid>
 </UserControl>

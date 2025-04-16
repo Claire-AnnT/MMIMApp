@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MMIMApp.Data;
+using MMIMApp.Views.CategoryViews;
 
 namespace MMIMApp.Controllers
 {
@@ -12,7 +14,7 @@ namespace MMIMApp.Controllers
 
         public MainViewModel()
         {
-            CurrentViewModel = new SearchProductsViewModel();
+            CurrentViewModel = new SearchCategoriesViewModel();
         }
     }
 }
