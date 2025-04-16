@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MMIMApp.Models
 {
-    public class Product
+    public class Product : INotifyPropertyChanged
     {
         [Key]
         public int Id { get; set; }
@@ -21,7 +23,20 @@ namespace MMIMApp.Models
         [Column(TypeName = "decimal(18, 2)"),Required]
         public decimal UnitPrice { get; set; }
         [Required]
-        public int Unit { get; set; }
+        private int units;
+        [Required]
+        public int Units
+        {
+            get => units;
+            set
+            {
+                if (units != value)
+                {
+                    units = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public int MinUnit { get; set; }
         [Required]
         public uint CreatedByUserId { get; set; }
@@ -31,13 +46,12 @@ namespace MMIMApp.Models
         [ForeignKey(nameof(CategoryId))]
         public Category? Category { get; set; }
         
-        public Product(int id, string name, string brand, decimal unitPrice, int unit, int minUnit, User createdByUser, Category? category=null)
+        public Product(string name, string brand, decimal unitPrice, int unit, int minUnit, User createdByUser, Category? category=null)
         {
-            Id = id;
             Name = name;
             Brand = brand;
             UnitPrice = unitPrice;
-            Unit = unit;
+            Units = unit;
             MinUnit = minUnit;
             CreatedByUserId = createdByUser.Id;
             CreatedByUser = createdByUser;
@@ -45,6 +59,11 @@ namespace MMIMApp.Models
             CategoryId = category?.Id;
         }
 
-        
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null!)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

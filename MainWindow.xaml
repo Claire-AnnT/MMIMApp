@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="MMIM" 
         d:DesignHeight="1024" d:DesignWidth="1440"
-        xmlns:views="clr-namespace:MMIMApp.Views.UserViews"
+        xmlns:views="clr-namespace:MMIMApp.Views.ProductViews"
         WindowState="Maximized">
 
 
     <Grid>
-        <views:SearchUsers DataContext="{Binding CurrentViewModel}"/>
+        <views:SearchProduct DataContext="{Binding CurrentViewModel}"/>
     </Grid>
 
 

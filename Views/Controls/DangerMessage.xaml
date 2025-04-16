@@ -6,12 +6,15 @@
              xmlns:local="clr-namespace:MMIMApp.Views.Controls"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
-    <Border BorderThickness="0" Padding="64 32" Background="White">
-        <StackPanel Orientation="Vertical">
-            <md:PackIcon Kind="Alert" Width="48" Height="48" Foreground="{StaticResource Danger}" HorizontalAlignment="Center"/>
-            <TextBlock Text="Delete Item" Style="{StaticResource T2}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0"/>
-            <TextBlock Text="Are you sure you want to delete this item? This action cannot be undone. " Style="{StaticResource T1}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0" Width="304" TextWrapping="Wrap" TextAlignment="Center"/>
-            <local:FormButtons ButtonText="Delete" Margin="0 32 0 0" HorizontalAlignment="Center"/>
-        </StackPanel>
-    </Border>
+    <Grid>
+        <Rectangle Fill="Black" Opacity="0.4" IsHitTestVisible="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Border BorderThickness="0" Padding="64 32" Background="White">
+            <StackPanel Orientation="Vertical">
+                <md:PackIcon Kind="Alert" Width="48" Height="48" Foreground="{StaticResource Danger}" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding ConfirmationPopUpTitle}" Style="{StaticResource T2}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0"/>
+                <TextBlock Text="{Binding ConfirmationPopUpMessage}" Style="{StaticResource T1}" Foreground="{StaticResource Dark}" HorizontalAlignment="Center" Margin="0 32 0 0" Width="304" TextWrapping="Wrap" TextAlignment="Center"/>
+                <local:FormButtons ButtonText="Delete" Margin="0 32 0 0" HorizontalAlignment="Center" SubmitCommand="{Binding DeleteProductCommand}" CancelCommand="{Binding CloseConfirmationPopup}" Panel.ZIndex="1"/>
+            </StackPanel>
+        </Border>
+    </Grid>
 </UserControl>

@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MMIMApp.Controllers;
 
-namespace MMIMApp.Views.ProductViews
+namespace MMIMApp.Views.Controls
 {
     /// <summary>
-    /// Interaction logic for SearchProduct.xaml
+    /// Interaction logic for ErrorMessage.xaml
     /// </summary>
-    public partial class SearchProduct : UserControl
+    public partial class ErrorMessage : UserControl
     {
-        public SearchProduct()
+        public ErrorMessage()
         {
             InitializeComponent();
-            DataContext = new SearchProductsViewModel();
         }
     }
 }

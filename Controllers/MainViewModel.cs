@@ -12,7 +12,7 @@ namespace MMIMApp.Controllers
 
         public MainViewModel()
         {
-            CurrentViewModel = new SearchUserViewModel();
+            CurrentViewModel = new SearchProductsViewModel();
         }
     }
 }

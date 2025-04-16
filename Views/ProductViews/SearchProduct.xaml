@@ -64,71 +64,51 @@
                         </StackPanel>
                     </Grid>
 
-                    <DataGrid Style="{x:Null}" Background="White" BorderThickness="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" FontSize="16" GridLinesVisibility="None" HorizontalAlignment="Stretch">
+                    <DataGrid ItemsSource="{Binding PagedProducts}" AutoGenerateColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionMode="Single" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn CanUserResize="False" Width="Auto">
-                                <DataGridCheckBoxColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <CheckBox/>
-                                    </DataTemplate>
-                                </DataGridCheckBoxColumn.HeaderTemplate>
-                            </DataGridCheckBoxColumn>
+                            <DataGridTextColumn Header="Product" Binding="{Binding Name}" SortMemberPath="Product" Width="*"/>
 
-                            <DataGridTextColumn Header="Product" IsReadOnly="True" Width="Auto"/>
-                            <DataGridTextColumn Header="Brand" IsReadOnly="True" Width="Auto"/>
-                            <DataGridTextColumn Header="Status" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Header="Brand" Binding="{Binding Brand}" SortMemberPath="Brand" Width="*"/>
 
-                            <DataGridTemplateColumn Width="Auto">
-                                <DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn Header="Units" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="Units"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button x:Name="addUnitBtn" Command="{Binding DataContext.AddUnitCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Padding="0" Background="Transparent">
+                                                <md:PackIcon Kind="Plus" Width="24" Height="24" Foreground="{StaticResource Secondary}" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                                            </Button>
+                                            <TextBlock Text="{Binding Units}" Style="{StaticResource T1}" VerticalAlignment="Center" Margin="16 0"/>
+                                            <Button x:Name="removeUnitBtn" Command="{Binding DataContext.RemoveUnitCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Padding="0" Background="Transparent">
+                                                <md:PackIcon Kind="Minus" Width="24" Height="24" Foreground="{StaticResource Secondary}" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                                            </Button>
+                                        </StackPanel>
                                     </DataTemplate>
-                                </DataGridTemplateColumn.HeaderTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                             
-                            <DataGridTemplateColumn Width="*">
-                                <DataGridTemplateColumn.HeaderStyle>
-                                    <Style TargetType="DataGridColumnHeader">
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <!-- Remove gray bar -->
-                                        <Setter Property="BorderBrush" Value="Transparent"/>
-                                        <!-- Remove any borders -->
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Setter Property="Padding" Value="0"/>
-                                    </Style>
-                                </DataGridTemplateColumn.HeaderStyle>
-                                
-                                <DataGridTemplateColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Button Padding="0" Background="Transparent" Margin="16" Width="Auto" HorizontalAlignment="Right">
-                                            <md:PackIcon Kind="DotsHorizontal" Width="24" Height="24" Foreground="Gray" Margin="0"/>
 
-                                            <Button.ContextMenu>
-                                                <ContextMenu Background="{StaticResource Light}" Foreground="{StaticResource Secondary}">
-                                                    <MenuItem>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <md:PackIcon Kind="Pencil" Height="24" Width="24" VerticalAlignment="Center"/>
-                                                            <TextBlock Text="Edit" Style="{StaticResource T1}" Margin="16 0 0 0" VerticalAlignment="Center"/>
-                                                        </StackPanel>
-                                                    </MenuItem>
-                                                    <MenuItem>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <md:PackIcon Kind="Delete" Height="24" Width="24" VerticalAlignment="Center"/>
-                                                            <TextBlock Text="Delete" Style="{StaticResource T1}" Margin="16 0 0 0" VerticalAlignment="Center"/>
-                                                        </StackPanel>
-                                                    </MenuItem>
-                                                </ContextMenu>
-                                            </Button.ContextMenu>
-                                        </Button>
+                            
+                            <DataGridTemplateColumn Header="Actions" Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Command="{Binding DataContext.EditProductCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+            CommandParameter="{Binding}" 
+            Margin="5" Background="Transparent" Padding="0">
+                                                <md:PackIcon Kind="Pencil" Width="24" Height="24" Foreground="{StaticResource Info}"/>
+                                            </Button>
+
+                                            <Button Command="{Binding DataContext.ShowConfirmatioPopUp, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+            CommandParameter="{Binding}" 
+            Background="Transparent" Padding="0">
+                                                <md:PackIcon Kind="Delete" Width="24" Height="24" Foreground="{StaticResource Danger}"/>
+                                            </Button>
+                                        </StackPanel>
                                     </DataTemplate>
-                                </DataGridTemplateColumn.HeaderTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
-
-
                     </DataGrid>
+
 
                     <Grid Background="White">
                         <Grid.ColumnDefinitions>
@@ -162,5 +142,9 @@
                 </StackPanel>
             </Grid>
         </Grid>
+
+        <Popup x:Name="DangerPopup" Placement="Center" StaysOpen="False" IsOpen="{Binding ConfirmationPopUpIsOpen}">
+            <control:DangerMessage/>
+        </Popup>
     </Grid>
 </UserControl>
